@@ -1,0 +1,48 @@
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr auto;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.col {
+  text-align: center;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.amount {
+  font-weight: bold;
+}
+
+.amount.income {
+  color: green;
+}
+
+.amount.expense {
+  color: red;
+}
+
+.delete {
+  background: #ff6b6b;
+  border: none;
+  padding: 6px 12px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete:hover {
+  background: #ff4a4a;
+}
