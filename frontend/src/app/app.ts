@@ -1,6 +1,5 @@
 import { Component, signal } from '@angular/core';
 
-// IMPORTAR OS DOIS COMPONENTES
 import { TransactionFormComponent } from './components/transaction-form/transaction-form';
 import { TransactionListComponent } from './components/transaction-list/transaction-list';
 

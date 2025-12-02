@@ -1,9 +1,3 @@
-// Eles definem:
-// quais campos cada transação deve ter,
-// seus tipos,
-// validações obrigatórias,
-// e como serão salvas no banco.
-
 const mongoose = require('mongoose');
 
 const TransactionSchema = new mongoose.Schema({

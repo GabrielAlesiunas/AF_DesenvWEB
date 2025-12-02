@@ -1,11 +1,9 @@
-/* Reset da lista */
 ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-/* Cada item */
 .item {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr auto;
@@ -22,13 +20,11 @@ ul {
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-/* Hover */
 .item:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* Campos */
 .col {
   text-align: center;
   font-size: 15px;
@@ -39,7 +35,6 @@ ul {
   text-align: left;
 }
 
-/* Valores */
 .amount {
   font-weight: 700;
   font-size: 15px;
@@ -53,7 +48,6 @@ ul {
   color: #e74c3c;
 }
 
-/* Botão */
 .delete {
   background: #ff6b6b;
   border: none;
@@ -69,7 +63,6 @@ ul {
   background: #ff4a4a;
 }
 
-/* Categorias (cores suaves e modernas) */
 .item.Salário {
   border-left: 5px solid #2ecc71;
   background: #eaf9ef;
@@ -95,7 +88,6 @@ ul {
   background: #f4f4f4;
 }
 
-/* Responsividade */
 @media (max-width: 650px) {
   .item {
     grid-template-columns: 1fr 1fr;
