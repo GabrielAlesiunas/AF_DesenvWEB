@@ -1,38 +1,50 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms'; 
+import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { TransactionService } from '../../services/transaction';
 import { Transaction } from '../../models/transaction';
 
 @Component({
   selector: 'app-transaction-form',
   standalone: true,
-  imports: [FormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './transaction-form.html',
   styleUrls: ['./transaction-form.css']
 })
 export class TransactionFormComponent {
-  @Output() saved = new EventEmitter();
 
-  tx: Transaction = {
-    type: 'expense',
-    title: '',
-    category: '',
-    amount: 0,
-    date: new Date().toISOString().split("T")[0]
-  };
+  @Output() saved = new EventEmitter<void>();
 
-  constructor(private service: TransactionService) {}
+  form!: FormGroup;
+
+  constructor(
+    private readonly fb: FormBuilder,
+    private readonly service: TransactionService
+  ) {
+    // AGORA pode usar this.fb
+    this.form = this.fb.nonNullable.group({
+      type: ['expense' as 'income' | 'expense', Validators.required],
+      title: ['', Validators.required],
+      category: ['', Validators.required],
+      amount: [0, [Validators.required, Validators.min(0.01)]],
+      date: [new Date().toISOString().split('T')[0], Validators.required]
+    });
+  }
 
   save() {
-    this.service.create(this.tx).subscribe(() => {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    const payload = this.form.getRawValue() as Transaction;
+
+    this.service.create(payload).subscribe(() => {
       this.saved.emit();
-      this.tx = {
+      this.form.reset({
         type: 'expense',
-        title: '',
-        category: '',
         amount: 0,
-        date: new Date().toISOString().split("T")[0]
-      };
+        date: new Date().toISOString().split('T')[0]
+      });
     });
   }
 }

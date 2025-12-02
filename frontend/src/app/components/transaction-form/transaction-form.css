@@ -25,7 +25,7 @@ select {
   border: 1px solid #d3d3d3;
   border-radius: 6px;
   font-size: 15px;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, background 0.2s;
 }
 
 input:focus,
@@ -48,4 +48,31 @@ button {
 
 button:hover {
   background: #357ab8;
+}
+
+/* ------------------- */
+/* Campos inválidos    */
+/* ------------------- */
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border-color: #e74c3c !important;
+  background: #fff5f5;
+}
+
+/* ------------------- */
+/* Mensagens de erro   */
+/* ------------------- */
+.error {
+  font-size: 13px;
+  color: #e74c3c;
+  margin-top: -6px;
+  margin-bottom: -4px;
+}
+
+/* ------------------- */
+/* Botão desativado    */
+/* ------------------- */
+button:disabled {
+  background: #999;
+  cursor: not-allowed;
 }

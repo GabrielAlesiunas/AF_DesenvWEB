@@ -21,3 +21,6 @@ export class TransactionService {
     return this.http.delete(`${this.base}/${id}`);
   }
 }
+
+
+// O frontend chama esse service → o service chama a API → a API usa controller → que usa o model.

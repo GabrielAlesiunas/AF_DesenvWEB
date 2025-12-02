@@ -1,18 +1,20 @@
 <h3>Nova Movimentação</h3>
 
-<form (ngSubmit)="save()">
-  <select [(ngModel)]="tx.type" name="type" required>
+<form [formGroup]="form" (ngSubmit)="save()">
+
+  <select formControlName="type">
     <option value="income">Receita</option>
     <option value="expense">Despesa</option>
   </select>
 
-  <input type="text" placeholder="Título" [(ngModel)]="tx.title" name="title" required>
+  <input type="text" placeholder="Título" formControlName="title">
 
-  <input type="text" placeholder="Categoria" [(ngModel)]="tx.category" name="category" required>
+  <input type="text" placeholder="Categoria" formControlName="category">
 
-  <input type="number" placeholder="Valor" [(ngModel)]="tx.amount" name="amount" required>
+  <input type="number" placeholder="Valor" formControlName="amount">
 
-  <input type="date" [(ngModel)]="tx.date" name="date" required>
+  <input type="date" formControlName="date">
 
   <button type="submit">Salvar</button>
+
 </form>
